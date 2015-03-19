@@ -1,0 +1,12 @@
+package com.levelmoney.proto.reducedTest.updated;
+
+message Transaction {
+}
+
+message Fund {
+  repeated Transaction seen_transactions_this_month = 201;
+}
+
+message BudgetResponse {
+  repeated Fund expenses = 16;
+}
