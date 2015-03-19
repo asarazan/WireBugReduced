@@ -1,12 +1,9 @@
 package com.levelmoney.proto.reducedTest.old;
 
-message Transaction {
+message DataObject {
+//  repeated string newFields = 1;
 }
 
-message Fund {
-//  repeated Transaction seen_transactions_this_month = 201;
-}
-
-message BudgetResponse {
-  repeated Fund expenses = 16;
+message Response {
+  optional DataObject expenses = 1;
 }

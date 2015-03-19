@@ -4,19 +4,19 @@ package com.levelmoney.proto.reducedTest.old;
 
 import com.squareup.wire.Message;
 
-public final class Transaction extends Message {
+public final class DataObject extends Message {
   private static final long serialVersionUID = 0L;
 
-  public Transaction() {
+  public DataObject() {
   }
 
-  private Transaction(Builder builder) {
+  private DataObject(Builder builder) {
     setBuilder(builder);
   }
 
   @Override
   public boolean equals(Object other) {
-    return other instanceof Transaction;
+    return other instanceof DataObject;
   }
 
   @Override
@@ -24,18 +24,18 @@ public final class Transaction extends Message {
     return 0;
   }
 
-  public static final class Builder extends Message.Builder<Transaction> {
+  public static final class Builder extends Message.Builder<DataObject> {
 
     public Builder() {
     }
 
-    public Builder(Transaction message) {
+    public Builder(DataObject message) {
       super(message);
     }
 
     @Override
-    public Transaction build() {
-      return new Transaction(this);
+    public DataObject build() {
+      return new DataObject(this);
     }
   }
 }
