@@ -9,14 +9,14 @@ public final class Response extends Message {
   private static final long serialVersionUID = 0L;
 
   @ProtoField(tag = 1)
-  public final DataObject expenses;
+  public final DataObject data;
 
-  public Response(DataObject expenses) {
-    this.expenses = expenses;
+  public Response(DataObject data) {
+    this.data = data;
   }
 
   private Response(Builder builder) {
-    this(builder.expenses);
+    this(builder.data);
     setBuilder(builder);
   }
 
@@ -24,18 +24,18 @@ public final class Response extends Message {
   public boolean equals(Object other) {
     if (other == this) return true;
     if (!(other instanceof Response)) return false;
-    return equals(expenses, ((Response) other).expenses);
+    return equals(data, ((Response) other).data);
   }
 
   @Override
   public int hashCode() {
     int result = hashCode;
-    return result != 0 ? result : (hashCode = expenses != null ? expenses.hashCode() : 0);
+    return result != 0 ? result : (hashCode = data != null ? data.hashCode() : 0);
   }
 
   public static final class Builder extends Message.Builder<Response> {
 
-    public DataObject expenses;
+    public DataObject data;
 
     public Builder() {
     }
@@ -43,11 +43,11 @@ public final class Response extends Message {
     public Builder(Response message) {
       super(message);
       if (message == null) return;
-      this.expenses = message.expenses;
+      this.data = message.data;
     }
 
-    public Builder expenses(DataObject expenses) {
-      this.expenses = expenses;
+    public Builder data(DataObject data) {
+      this.data = data;
       return this;
     }
 

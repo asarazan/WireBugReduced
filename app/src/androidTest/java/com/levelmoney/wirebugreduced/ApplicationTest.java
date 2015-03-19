@@ -24,7 +24,7 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
 
     public void testUnknownRepeatedFieldCrash() throws IOException {
         Response budget = new Builder()
-                .expenses(getExpenses())
+                .data(getData())
                 .build();
 
         byte[] arr = budget.toByteArray();
@@ -37,14 +37,14 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     }
 
     // Return a single-item list of DataObjects.
-    private static DataObject getExpenses() {
+    private static DataObject getData() {
         return new DataObject.Builder()
-                .newFields(listOfTransactions())
+                .newFields(listOfStrings())
                 .build();
     }
 
     // Lists longer than 1 will trigger the crash.
-    private static List<String> listOfTransactions() {
+    private static List<String> listOfStrings() {
         List<String> retval = new ArrayList<>();
         for (int j = 0; j < 2; ++j) {
             retval.add(""+j);
