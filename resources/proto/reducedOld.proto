@@ -1,5 +1,0 @@
-package com.levelmoney.proto.reducedTest.old;
-
-message DataObject {
-//  repeated string newFields = 1;
-}

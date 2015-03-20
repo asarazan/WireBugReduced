@@ -3,7 +3,8 @@ package com.levelmoney.wirebugreduced;
 import android.app.Application;
 import android.test.ApplicationTestCase;
 
-import com.levelmoney.proto.reducedTest.updated.DataObject;
+import com.levelmoney.proto.reducedTest.updated.Version1;
+import com.levelmoney.proto.reducedTest.updated.Version2;
 import com.squareup.wire.Wire;
 
 import java.io.IOException;
@@ -21,20 +22,16 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     }
 
     public void testUnknownRepeatedFieldCrash() throws IOException {
-        DataObject data = getData();
-
-        byte[] arr = data.toByteArray();
-
-        com.levelmoney.proto.reducedTest.old.DataObject old =
-                new Wire().parseFrom(arr, com.levelmoney.proto.reducedTest.old.DataObject.class);
+        Version2 data = getData();
+        Version1 old = new Wire().parseFrom(data.toByteArray(), Version1.class);
 
         // This will crash.
         old.toByteArray();
     }
 
     // Return a single-item list of DataObjects.
-    private static DataObject getData() {
-        return new DataObject.Builder()
+    private static Version2 getData() {
+        return new Version2.Builder()
                 .newFields(listOfStrings())
                 .build();
     }
@@ -43,7 +40,7 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     private static List<String> listOfStrings() {
         List<String> retval = new ArrayList<>();
         for (int j = 0; j < 2; ++j) {
-            retval.add(""+j);
+            retval.add("");
         }
         return retval;
     }

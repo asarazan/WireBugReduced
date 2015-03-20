@@ -1,5 +1,8 @@
 package com.levelmoney.proto.reducedTest.updated;
 
-message DataObject {
+message Version1 {
+}
+
+message Version2 {
   repeated string newFields = 1;
 }
