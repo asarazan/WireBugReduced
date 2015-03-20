@@ -3,8 +3,6 @@ package com.levelmoney.wirebugreduced;
 import android.app.Application;
 import android.test.ApplicationTestCase;
 
-import com.levelmoney.proto.reducedTest.updated.Response;
-import com.levelmoney.proto.reducedTest.updated.Response.Builder;
 import com.levelmoney.proto.reducedTest.updated.DataObject;
 import com.squareup.wire.Wire;
 
@@ -23,14 +21,12 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     }
 
     public void testUnknownRepeatedFieldCrash() throws IOException {
-        Response budget = new Builder()
-                .data(getData())
-                .build();
+        DataObject data = getData();
 
-        byte[] arr = budget.toByteArray();
+        byte[] arr = data.toByteArray();
 
-        com.levelmoney.proto.reducedTest.old.Response old =
-                new Wire().parseFrom(arr, com.levelmoney.proto.reducedTest.old.Response.class);
+        com.levelmoney.proto.reducedTest.old.DataObject old =
+                new Wire().parseFrom(arr, com.levelmoney.proto.reducedTest.old.DataObject.class);
 
         // This will crash.
         old.toByteArray();

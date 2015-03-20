@@ -3,7 +3,3 @@ package com.levelmoney.proto.reducedTest.old;
 message DataObject {
 //  repeated string newFields = 1;
 }
-
-message Response {
-  optional DataObject data = 1;
-}
